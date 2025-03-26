@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netherpen Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-gray-100 to-sky-100 flex items-center justify-center w-full">
+ <form class=" mx-auto border border-sky-400 rounded-md w-74 px-6 py-8" id="loginForm">
+  <h2 class="text-zinc-800 text-2xl mb-6 font-bold">Login</h2>
+  <div class="mb-5">
+    <label for="text" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+    <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-600" placeholder="Netherpen" required />
+  </div>
+  <div class="mb-5">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
+    <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+  </div>
+  <button type="submit" id="submitBtn" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Gas!</button>
+ </form>
+
+ <script>
+   document.getElementById("loginForm").addEventListener("submit", async function(e) {
+      e.preventDefault()
+
+      const fmData = new FormData(this)
+      const data = Object.fromEntries(fmData)
+
+      try {
+         const res = await fetch("http://localhost:3000/panel?username="+data.username)
+
+         window.location.href = `/panel?username=${data.username}`
+      } catch(e) {
+         alert(e)
+      }
+   });
+ </script>
+</body>
+</html>

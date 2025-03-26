@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netherpen Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-gray-800">
+    <div class="w-full fixed top-0 pt-4 z-50 px-2">
+     <div class="px-4 bg-gray-800 shadow-gray-700 shadow rounded py-4">
+       <h1 class="font-bold text-lg text-white text-sm">Netherpen</h1>
+     </div>
+    </div>
+
+    <div class="flex flex-col justify-center items-center gap-y-3 px-4 mt-24">
+     <div class="flex flex-col w-full">
+       <div class="border border-indigo-500 rounded-lg bg-gray-700 py-3 px-4">
+         <div class="flex flex-col gap-y-1.5">
+           <p class="text-gray-400 text-sm">Username</p>
+           <h2 class="text-neutral-100 text-lg font-bold"><%= username %></h2>
+         </div>
+       </div>
+     </div>
+
+     <div class="flex flex-col w-full">
+       <div class="border border-lime-500 rounded-lg bg-gray-700 py-3 px-4">
+         <div class="flex flex-col gap-y-1.5">
+           <p class="text-gray-400 text-sm">Role</p>
+           <h2 class="text-lime-300 text-lg font-bold"><%= userData.role %></h2>
+         </div>
+       </div>
+     </div>
+
+     <div class="flex flex-col w-full">
+       <div class="border border-emerald-500 rounded-lg bg-gray-700 py-3 px-4">
+         <div class="flex flex-col gap-y-1.5">
+           <p class="text-gray-400 text-sm">Saldo Netherpen</p>
+           <h2 class="text-lg font-bold text-emerald-400">IDR <%= userData.saldo %></h2>
+         </div>
+       </div>
+     </div>
+    </div>
+
+   <% if(userData.role === "Member" && userData.saldo === 0) { %>
+    <div class="px-4 mx-auto mt-8">
+     <div class="bg-yellow-300 space-y-2 px-3 py-4 rounded-lg">
+       <div class="inline-flex items-center gap-x-2">
+         <svg xmlns="http://www.w3.org/2000/svg" width="1.3rem" height="1.3rem" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+           <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+         </svg>
+         <p class="font-bold">Info penting untukmu</p>
+       </div>
+       <p class="text-gray-800 text-sm">
+         Topup saldo Netherpen bisa melewati psyment gateway otomatis, proses pembelian cepat!
+       </p>
+     </div>
+    </div>
+   <% } %>
+
+   <% if(userData.role === "Admin" || userData.role === "Agent" || userData.role === "Sub Agent") { %>
+   <div class="mt-16 px-4 mx-auto w-full">
+     <h2 class="font-bold text-gray-400 text-sm">Dashboard</h2>
+
+     <div class="flex flex-col justify-center items-center gap-y-3 mt-8">
+     <div class="flex flex-col w-full">
+       <div class="border border-yellow-500 rounded-lg bg-gray-700 py-3 px-4">
+         <div class="flex flex-col gap-y-1.5">
+           <p class="text-gray-400 text-sm">Total Agent</p>
+           <h2 class="text-neutral-100 text-lg font-bold">0</h2>
+         </div>
+       </div>
+     </div>
+
+     <div class="flex flex-col w-full">
+       <div class="border border-blue-500 rounded-lg bg-gray-700 py-3 px-4">
+         <div class="flex flex-col gap-y-1.5">
+           <p class="text-gray-400 text-sm">Total User</p>
+           <h2 class="text-neutral-100 text-lg font-bold">0</h2>
+         </div>
+       </div>
+     </div>
+
+     <div class="flex flex-col w-full">
+       <div class="border border-pink-500 rounded-lg bg-gray-700 py-3 px-4">
+         <div class="flex flex-col gap-y-1.5">
+           <p class="text-gray-400 text-sm">Player aktif (Saat ini)</p>
+           <h2 class="text-lg font-bold text-neutral-100">IDR 0</h2>
+         </div>
+       </div>
+     </div>
+
+     <div class="flex flex-col w-full">
+       <div class="border border-rose-500 rounded-lg bg-gray-700 py-3 px-4">
+         <div class="flex flex-col gap-y-1.5">
+           <p class="text-gray-400 text-sm">Total User Kamu</p>
+           <h2 class="text-neutral-100 text-lg font-bold">0</h2>
+         </div>
+       </div>
+     </div>
+    </div>
+   </div>
+  <% } %>
+</body>
+</html>

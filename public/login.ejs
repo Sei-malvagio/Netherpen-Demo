@@ -28,7 +28,7 @@
       const data = Object.fromEntries(fmData)
 
       try {
-         const res = await fetch("http://localhost:3000/panel?username="+data.username)
+         const res = await fetch("https://netherpen-demo-production-5c0d.up.railway.app/panel?username="+data.username)
 
          window.location.href = `/panel?username=${data.username}`
       } catch(e) {

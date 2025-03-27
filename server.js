@@ -55,7 +55,7 @@ fastify.get("/", async (req, reply) => {
   return reply.viewAsync(MAIN_DIR+"index.ejs", { name: "User" });
 })
 
-fastify.listen({ port: 3000 }, (err) => {
+fastify.listen({ port: 8080 }, (err) => {
   if (err) throw err;
   console.log(`Up, server listen ${fastify.server.address().port}`)
 })
